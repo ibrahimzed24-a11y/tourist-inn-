@@ -1,9 +1,7 @@
 import React from 'react';
-import { useCardTilt } from '../hooks/useCardTilt';
-import { useMagneticOrbit } from '../hooks/useMagneticOrbit';
 import TypographicSnapIn from './TypographicSnapIn';
 import ScrollRevealSection from './ScrollRevealSection';
-import { Check, Star, Bed, Sparkles, ArrowRight } from 'lucide-react';
+import { Check, Star, Sparkles, ArrowRight } from 'lucide-react';
 import { BookingState } from './BookingBar';
 
 interface PricingTableProps {
@@ -28,7 +26,6 @@ interface TierProps {
 }
 
 function PricingCard({
-  id,
   name,
   subtitle,
   basePriceUSD,
@@ -40,130 +37,73 @@ function PricingCard({
   currencyMultiplier,
   onSelect,
 }: TierProps) {
-  const cardRef = useCardTilt<HTMLDivElement>({ maxTiltDeg: 10, scale: 1.03 });
-  const buttonRef = useMagneticOrbit<HTMLButtonElement>({ radius: 32, maxDisplacementRatio: 0.22 });
-
   const convertedNightly = Math.round(basePriceUSD * currencyMultiplier);
   const totalStay = Math.round(convertedNightly * nights);
 
   return (
-    <div
-      ref={cardRef}
-      className={`relative flex flex-col justify-between rounded-2xl transition-all duration-300 will-change-transform transform-gpu ${
-        isPopular
-          ? 'bg-[#0d1527] text-white shadow-2xl ring-2 ring-[#ff5a36] lg:-translate-y-2'
-          : 'bg-white text-[#0d1527] border border-[#0d1527]/12 shadow-md hover:shadow-xl'
-      }`}
-      style={{ transformStyle: 'preserve-3d' }}
+    <article
+      className={
+        'group relative flex flex-col overflow-hidden rounded-2xl transition-shadow duration-500 ' +
+        (isPopular
+          ? 'bg-[#0a2e45] text-white shadow-[0_30px_60px_-30px_rgba(10,46,69,0.6)] ring-1 ring-[#c9a96e]/70 lg:-translate-y-4'
+          : 'bg-white text-[#0a2e45] shadow-[0_18px_40px_-28px_rgba(10,46,69,0.35)] hover:shadow-[0_28px_50px_-26px_rgba(10,46,69,0.45)]')
+      }
     >
-      {/* Most Popular Focal Vector Badge */}
-      {isPopular && (
-        <div className="absolute -top-3.5 inset-x-0 flex justify-center z-20">
-          <span className="px-4 py-1 text-[11px] font-mono font-bold uppercase tracking-widest bg-[#ff5a36] text-white rounded-full shadow-lg flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5" />
+      <div className="relative h-60 w-full overflow-hidden">
+        <img src={imageUrl} alt={name} loading="lazy" referrerPolicy="no-referrer" className="zoom-img w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a2e45]/70 via-transparent to-transparent" />
+        {isPopular && (
+          <span className="absolute top-4 left-4 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] bg-[#c9a96e] text-[#0a2e45] rounded-full flex items-center gap-1.5">
+            <Sparkles className="w-3 h-3" />
             Most Popular Choice
           </span>
-        </div>
-      )}
-
-      {/* Card Header & Preview Image */}
-      <div>
-        <div className="relative h-48 w-full overflow-hidden rounded-t-2xl">
-          <img
-            src={imageUrl}
-            alt={name}
-            loading="lazy"
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-          />
-          <div
-            className={`absolute inset-0 ${
-              isPopular
-                ? 'bg-gradient-to-t from-[#0d1527] via-transparent to-transparent'
-                : 'bg-gradient-to-t from-black/40 via-transparent to-transparent'
-            }`}
-          />
-          <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
-            <span className="text-xs font-mono uppercase tracking-wider bg-black/40 backdrop-blur px-2.5 py-1 rounded">
-              {subtitle}
-            </span>
-            <div className="flex items-center gap-1 text-xs">
-              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              <span>4.9 / 5</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="p-6 sm:p-7 space-y-6">
-          <div className="space-y-1">
-            <h3 className="text-2xl font-serif font-bold tracking-tight">
-              {name}
-            </h3>
-            <p className={`text-xs ${isPopular ? 'text-white/70' : 'text-[#0d1527]/65'}`}>
-              Queen Bed · Sleeps 2 Guests · En-Suite Bath
-            </p>
-          </div>
-
-          {/* Pricing Math */}
-          <div className="space-y-1 pt-2 border-t border-current/15">
-            <div className="flex items-baseline gap-1">
-              <span className="text-4xl font-serif font-bold tracking-tight tabular-nums">
-                {currencySymbol}{convertedNightly}
-              </span>
-              <span className={`text-xs uppercase font-medium ${isPopular ? 'text-white/70' : 'text-[#0d1527]/60'}`}>
-                / night
-              </span>
-            </div>
-            <div className={`text-xs font-mono ${isPopular ? 'text-amber-300' : 'text-amber-800'}`}>
-              {nights} night stay: <strong>{currencySymbol}{totalStay}</strong> total
-            </div>
-          </div>
-
-          {/* Amenities checklist */}
-          <ul className="space-y-2.5 pt-2 text-xs">
-            {features.map((feature, i) => (
-              <li key={i} className="flex items-center gap-2.5">
-                <div
-                  className={`p-1 rounded-full ${
-                    isPopular ? 'bg-[#ff5a36]/20 text-[#ff5a36]' : 'bg-[#0d1527]/10 text-[#0d1527]'
-                  }`}
-                >
-                  <Check className="w-3.5 h-3.5 stroke-[2.5]" />
-                </div>
-                <span className={isPopular ? 'text-white/90' : 'text-[#0d1527]/85'}>
-                  {feature}
-                </span>
-              </li>
-            ))}
-          </ul>
+        )}
+        <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between text-white text-xs">
+          <span className="uppercase tracking-[0.18em]">{subtitle}</span>
+          <span className="flex items-center gap-1">
+            <Star className="w-3.5 h-3.5 fill-[#c9a96e] text-[#c9a96e]" />
+            4.9 / 5
+          </span>
         </div>
       </div>
 
-      {/* CTA Button with Kinetic Magnet Orbit */}
-      <div className="p-6 sm:p-7 pt-0">
-        <button
-          ref={buttonRef}
-          onClick={onSelect}
-          className={`w-full py-3.5 px-5 text-xs font-semibold uppercase tracking-widest rounded-lg flex items-center justify-center gap-2 transition-all will-change-transform shadow-md ${
-            isPopular
-              ? 'bg-[#ff5a36] hover:bg-[#e04825] text-white'
-              : 'bg-[#0d1527] hover:bg-[#1a294d] text-white'
-          }`}
-        >
+      <div className="p-7 flex-1 flex flex-col gap-6">
+        <div className="space-y-1">
+          <h3 className="text-2xl font-serif font-semibold">{name}</h3>
+          <p className={'text-xs ' + (isPopular ? 'text-white/65' : 'text-[#0a2e45]/60')}>
+            Queen Bed · Sleeps 2 Guests · En-Suite Bath
+          </p>
+        </div>
+
+        <div className={'pt-4 border-t ' + (isPopular ? 'border-white/15' : 'border-[#0a2e45]/10')}>
+          <div className="flex items-baseline gap-1.5">
+            <span className="text-4xl font-serif tabular-nums">{currencySymbol}{convertedNightly}</span>
+            <span className={'text-xs uppercase tracking-wider ' + (isPopular ? 'text-white/60' : 'text-[#0a2e45]/55')}>/ night</span>
+          </div>
+          <div className={'text-xs mt-1 ' + (isPopular ? 'text-[#e9d3a6]' : 'text-[#8a6d3b]')}>
+            {nights} night stay: <strong>{currencySymbol}{totalStay}</strong> total
+          </div>
+        </div>
+
+        <ul className="space-y-2.5 text-[13px] flex-1">
+          {features.map((feature, i) => (
+            <li key={i} className="flex items-start gap-2.5">
+              <Check className={'w-4 h-4 mt-0.5 shrink-0 ' + (isPopular ? 'text-[#7fdcd0]' : 'text-[#1fb5ac]')} />
+              <span className={isPopular ? 'text-white/85' : 'text-[#0a2e45]/80'}>{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+        <button onClick={onSelect} className="btn-cta w-full py-3.5 text-xs">
           <span>Select This Room</span>
-          <ArrowRight className="w-3.5 h-3.5" />
+          <ArrowRight className="w-3.5 h-3.5 btn-cta-icon" />
         </button>
       </div>
-    </div>
+    </article>
   );
 }
 
-export default function PricingTable({
-  booking,
-  onSelectTier,
-  currency,
-  typoTriggerKey,
-}: PricingTableProps) {
+export default function PricingTable({ booking, onSelectTier, currency, typoTriggerKey }: PricingTableProps) {
   const nights = React.useMemo(() => {
     try {
       const d1 = new Date(booking.checkin);
@@ -203,7 +143,7 @@ export default function PricingTable({
       name: 'Deluxe Double Room',
       subtitle: 'Premium High Floor',
       basePriceUSD: 109,
-      isPopular: true, // Visually highlighted Most Popular tier
+      isPopular: true,
       features: [
         'Private kitchenette with microwave & cookware',
         'Balcony city view & natural illumination',
@@ -240,27 +180,23 @@ export default function PricingTable({
   ];
 
   return (
-    <ScrollRevealSection id="rooms" className="py-24 bg-[#f2efe9] border-b border-[#051d2d]/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
-        {/* Header with Typographic Snap-In */}
+    <ScrollRevealSection id="rooms" className="py-24 sm:py-28 bg-[#f3ead9]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-xs uppercase font-mono tracking-widest text-teal-800 block font-bold">
-            TRANSPARENT NIGHTLY PRICING
-          </span>
+          <span className="eyebrow">TRANSPARENT NIGHTLY PRICING</span>
           <TypographicSnapIn
             as="h2"
             text="ACCOMMODATION & SUITES"
             triggerKey={typoTriggerKey}
             delayMultiplier={0.018}
-            className="text-3xl sm:text-5xl font-serif font-bold text-[#051d2d]"
+            className="text-3xl sm:text-5xl font-serif font-semibold text-[#0a2e45]"
           />
-          <p className="text-sm sm:text-base text-[#051d2d]/70 font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-[#0a2e45]/70 leading-relaxed">
             Transparent pricing with zero hidden city charges. Enjoy private kitchenettes, airport bridge convenience, and verified 8.8/10 guest hospitality.
           </p>
         </div>
 
-        {/* 3-Column Pricing Grid with Highlighted Most Popular Tier */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {tiers.map((tier) => (
             <PricingCard key={tier.id} {...tier} />
           ))}

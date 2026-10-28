@@ -39,7 +39,7 @@ export default function TravelerFAQ({ typoTriggerKey }: { typoTriggerKey?: numbe
   ];
 
   return (
-    <ScrollRevealSection id="faq" className="py-24 bg-[#f7f5ef] border-b border-[#051d2d]/10">
+    <ScrollRevealSection id="faq" className="py-24 bg-[#fbf8f3] border-b border-[#0a2e45]/10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center space-y-3">
           <span className="text-xs uppercase font-mono tracking-widest text-teal-800 font-bold flex items-center justify-center gap-1.5">
@@ -51,9 +51,9 @@ export default function TravelerFAQ({ typoTriggerKey }: { typoTriggerKey?: numbe
             text="FREQUENT TRAVELER QUESTIONS"
             triggerKey={typoTriggerKey}
             delayMultiplier={0.018}
-            className="text-3xl sm:text-5xl font-serif font-bold text-[#051d2d]"
+            className="text-3xl sm:text-5xl font-serif font-bold text-[#0a2e45]"
           />
-          <p className="text-xs sm:text-sm text-[#051d2d]/70 max-w-xl mx-auto font-normal">
+          <p className="text-xs sm:text-sm text-[#0a2e45]/70 max-w-xl mx-auto font-normal">
             Everything you need to know about airport bridge transit, kitchen facilities, and island hospitality.
           </p>
         </div>
@@ -65,11 +65,11 @@ export default function TravelerFAQ({ typoTriggerKey }: { typoTriggerKey?: numbe
             return (
               <div
                 key={idx}
-                className="bg-white rounded-xl border border-[#051d2d]/10 overflow-hidden shadow-sm transition-all"
+                className="bg-white rounded-xl border border-[#0a2e45]/10 overflow-hidden shadow-sm transition-all"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 font-serif font-bold text-base sm:text-lg text-[#051d2d] hover:text-teal-800 transition-colors"
+                  className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 font-serif font-bold text-base sm:text-lg text-[#0a2e45] hover:text-teal-800 transition-colors"
                   aria-expanded={isOpen}
                 >
                   <span>{faq.q}</span>
@@ -80,7 +80,7 @@ export default function TravelerFAQ({ typoTriggerKey }: { typoTriggerKey?: numbe
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-6 pb-6 text-xs sm:text-sm text-[#051d2d]/75 leading-relaxed border-t border-[#051d2d]/5 pt-4">
+                  <div className="px-6 pb-6 text-xs sm:text-sm text-[#0a2e45]/75 leading-relaxed border-t border-[#0a2e45]/5 pt-4">
                     {faq.a}
                   </div>
                 )}

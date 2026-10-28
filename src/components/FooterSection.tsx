@@ -19,7 +19,7 @@ export default function FooterSection() {
   };
 
   return (
-    <footer className="bg-[#0a1128] text-white/80 border-t border-white/10 pt-16 pb-12">
+    <footer className="bg-[#082436] text-white/80 border-t border-white/10 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Main 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
@@ -64,7 +64,7 @@ export default function FooterSection() {
                 </a>
               </li>
               <li>
-                <a href="#pricing" className="hover:text-white transition-colors">
+                <a href="#rooms" className="hover:text-white transition-colors">
                   Nightly Rates & Availability
                 </a>
               </li>
@@ -125,7 +125,7 @@ export default function FooterSection() {
                 <button
                   ref={submitButtonRef}
                   type="submit"
-                  className="w-full py-2.5 px-4 text-xs font-semibold uppercase tracking-wider text-[#0a1128] bg-white hover:bg-white/90 rounded-lg flex items-center justify-center gap-2 transition-colors will-change-transform font-mono"
+                  className="w-full py-2.5 px-4 text-xs font-semibold uppercase tracking-wider text-[#082436] bg-white hover:bg-white/90 rounded-lg flex items-center justify-center gap-2 transition-colors will-change-transform font-mono"
                 >
                   <span>Subscribe</span>
                   <ArrowRight className="w-3.5 h-3.5" />

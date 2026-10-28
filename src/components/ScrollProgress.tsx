@@ -21,7 +21,7 @@ export default function ScrollProgress() {
       aria-hidden="true"
     >
       <motion.div
-        className="h-full w-full bg-gradient-to-r from-[#0891b2] via-[#14b8a6] to-[#ff5a36] origin-left shadow-[0_0_10px_rgba(20,184,166,0.6)]"
+        className="h-full w-full bg-gradient-to-r from-[#0891b2] via-[#14b8a6] to-[#1fb5ac] origin-left shadow-[0_0_10px_rgba(20,184,166,0.6)]"
         style={{ scaleX }}
       />
     </div>

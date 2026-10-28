@@ -64,23 +64,23 @@ export default function BookingModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="booking-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0d1527]/60 backdrop-blur-sm animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0a2e45]/60 backdrop-blur-sm animate-in fade-in duration-200"
     >
-      <div className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-[#0d1527]/15 overflow-hidden max-h-[90vh] flex flex-col">
+      <div className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-[#0a2e45]/15 overflow-hidden max-h-[90vh] flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#0d1527]/10 bg-[#f8f7f4]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#0a2e45]/10 bg-[#f5efe4]">
           <div>
-            <h2 id="booking-modal-title" className="text-xl font-serif font-bold text-[#0d1527]">
+            <h2 id="booking-modal-title" className="text-xl font-serif font-bold text-[#0a2e45]">
               {isSuccess ? 'Reservation Confirmed' : 'Reserve at TOURIST INN'}
             </h2>
-            <p className="text-xs text-[#0d1527]/60 font-mono">
+            <p className="text-xs text-[#0a2e45]/60 font-mono">
               Malé City · Republic of Maldives
             </p>
           </div>
           <button
             onClick={onClose}
             aria-label="Close booking modal"
-            className="p-1.5 text-[#0d1527]/60 hover:text-[#0d1527] hover:bg-black/5 rounded-full transition-colors"
+            className="p-1.5 text-[#0a2e45]/60 hover:text-[#0a2e45] hover:bg-black/5 rounded-full transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -95,36 +95,42 @@ export default function BookingModal({
               </div>
 
               <div className="space-y-2">
-                <h3 className="text-2xl font-serif font-bold text-[#0d1527]">
+                <h3 className="text-2xl font-serif font-bold text-[#0a2e45]">
                   Thank you, {fullName}!
                 </h3>
-                <p className="text-xs text-[#0d1527]/70 max-w-md mx-auto leading-relaxed">
+                <p className="text-xs text-[#0a2e45]/70 max-w-md mx-auto leading-relaxed">
                   Your reservation request has been received. Our 24/7 WhatsApp Concierge will contact you at <strong>{whatsapp || email}</strong> shortly with your bridge transfer pickup details.
                 </p>
               </div>
 
-              <div className="p-4 bg-[#f8f7f4] rounded-xl border border-[#0d1527]/10 text-left font-mono text-xs space-y-2">
-                <div className="flex justify-between border-b border-[#0d1527]/10 pb-2">
-                  <span className="text-[#0d1527]/60">Booking Reference:</span>
-                  <strong className="text-[#0d1527]">{confirmationCode}</strong>
+              <div className="p-4 bg-[#f5efe4] rounded-xl border border-[#0a2e45]/10 text-left font-mono text-xs space-y-2">
+                <div className="flex justify-between border-b border-[#0a2e45]/10 pb-2">
+                  <span className="text-[#0a2e45]/60">Booking Reference:</span>
+                  <strong className="text-[#0a2e45]">{confirmationCode}</strong>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#0d1527]/60">Room:</span>
-                  <span className="text-[#0d1527]">{roomDisplayName}</span>
+                  <span className="text-[#0a2e45]/60">Room:</span>
+                  <span className="text-[#0a2e45]">{roomDisplayName}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#0d1527]/60">Dates:</span>
-                  <span className="text-[#0d1527]">{booking.checkin} → {booking.checkout} ({nights} nights)</span>
+                  <span className="text-[#0a2e45]/60">Dates:</span>
+                  <span className="text-[#0a2e45]">{booking.checkin} → {booking.checkout} ({nights} nights)</span>
                 </div>
-                <div className="flex justify-between pt-2 border-t border-[#0d1527]/10 text-sm">
-                  <span className="font-bold text-[#0d1527]">Total Payable on Arrival:</span>
-                  <strong className="text-[#0d1527]">{currencySymbol}{totalCost}</strong>
+                {booking.promoCode && (
+                  <div className="flex justify-between">
+                    <span className="text-[#0a2e45]/60">Promo Code:</span>
+                    <span className="text-[#0a2e45]">{booking.promoCode}</span>
+                  </div>
+                )}
+                <div className="flex justify-between pt-2 border-t border-[#0a2e45]/10 text-sm">
+                  <span className="font-bold text-[#0a2e45]">Total Payable on Arrival:</span>
+                  <strong className="text-[#0a2e45]">{currencySymbol}{totalCost}</strong>
                 </div>
               </div>
 
               <button
                 onClick={onClose}
-                className="w-full py-3 text-xs font-semibold uppercase tracking-wider text-white bg-[#0d1527] rounded-lg hover:bg-[#1e2f55] transition-colors"
+                className="w-full py-3 text-xs font-semibold uppercase tracking-wider text-white bg-[#0a2e45] rounded-lg hover:bg-[#0f3d5c] transition-colors"
               >
                 Close Window
               </button>
@@ -132,31 +138,31 @@ export default function BookingModal({
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Selected Stay Summary Card */}
-              <div className="p-4 bg-[#f8f7f4] rounded-xl border border-[#0d1527]/10 space-y-3">
+              <div className="p-4 bg-[#f5efe4] rounded-xl border border-[#0a2e45]/10 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#0d1527] flex items-center gap-1.5">
-                    <BedDouble className="w-4 h-4 text-[#ff5a36]" />
+                  <span className="text-xs font-bold text-[#0a2e45] flex items-center gap-1.5">
+                    <BedDouble className="w-4 h-4 text-[#1fb5ac]" />
                     {roomDisplayName}
                   </span>
-                  <span className="text-xs font-mono font-bold text-[#0d1527]">
+                  <span className="text-xs font-mono font-bold text-[#0a2e45]">
                     {currencySymbol}{nightlyConverted} / night
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 text-xs text-[#0d1527]/75 font-mono">
+                <div className="grid grid-cols-2 gap-3 text-xs text-[#0a2e45]/75 font-mono">
                   <div className="flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-[#0d1527]/50" />
+                    <Calendar className="w-3.5 h-3.5 text-[#0a2e45]/50" />
                     <span>{booking.checkin} → {booking.checkout}</span>
                   </div>
                   <div className="flex items-center gap-1.5 justify-end">
-                    <Users className="w-3.5 h-3.5 text-[#0d1527]/50" />
+                    <Users className="w-3.5 h-3.5 text-[#0a2e45]/50" />
                     <span>{booking.guests} Guest{booking.guests > 1 ? 's' : ''} ({nights} nights)</span>
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-[#0d1527]/10 flex justify-between items-baseline text-sm">
-                  <span className="text-xs font-medium text-[#0d1527]/70">Calculated Stay Total:</span>
-                  <span className="text-xl font-serif font-bold text-[#0d1527]">
+                <div className="pt-2 border-t border-[#0a2e45]/10 flex justify-between items-baseline text-sm">
+                  <span className="text-xs font-medium text-[#0a2e45]/70">Calculated Stay Total:</span>
+                  <span className="text-xl font-serif font-bold text-[#0a2e45]">
                     {currencySymbol}{totalCost}
                   </span>
                 </div>
@@ -165,7 +171,7 @@ export default function BookingModal({
               {/* Guest Fields */}
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="modal-name" className="block text-xs font-semibold uppercase tracking-wider text-[#0d1527]/70 mb-1">
+                  <label htmlFor="modal-name" className="block text-xs font-semibold uppercase tracking-wider text-[#0a2e45]/70 mb-1">
                     Guest Full Name *
                   </label>
                   <input
@@ -175,13 +181,13 @@ export default function BookingModal({
                     placeholder="e.g. Elena Rostova"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
-                    className="w-full bg-[#f8f7f4] border border-[#0d1527]/15 rounded-lg px-3.5 py-2.5 text-xs text-[#0d1527] focus:outline-none focus:ring-1 focus:ring-[#0d1527]"
+                    className="w-full bg-[#f5efe4] border border-[#0a2e45]/15 rounded-lg px-3.5 py-2.5 text-xs text-[#0a2e45] focus:outline-none focus:ring-1 focus:ring-[#0a2e45]"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="modal-email" className="block text-xs font-semibold uppercase tracking-wider text-[#0d1527]/70 mb-1">
+                    <label htmlFor="modal-email" className="block text-xs font-semibold uppercase tracking-wider text-[#0a2e45]/70 mb-1">
                       Email Address *
                     </label>
                     <input
@@ -191,11 +197,11 @@ export default function BookingModal({
                       placeholder="name@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-[#f8f7f4] border border-[#0d1527]/15 rounded-lg px-3.5 py-2.5 text-xs text-[#0d1527] focus:outline-none focus:ring-1 focus:ring-[#0d1527]"
+                      className="w-full bg-[#f5efe4] border border-[#0a2e45]/15 rounded-lg px-3.5 py-2.5 text-xs text-[#0a2e45] focus:outline-none focus:ring-1 focus:ring-[#0a2e45]"
                     />
                   </div>
                   <div>
-                    <label htmlFor="modal-whatsapp" className="block text-xs font-semibold uppercase tracking-wider text-[#0d1527]/70 mb-1">
+                    <label htmlFor="modal-whatsapp" className="block text-xs font-semibold uppercase tracking-wider text-[#0a2e45]/70 mb-1">
                       WhatsApp / Phone
                     </label>
                     <input
@@ -204,17 +210,17 @@ export default function BookingModal({
                       placeholder="+1 (555) 000-0000"
                       value={whatsapp}
                       onChange={(e) => setWhatsapp(e.target.value)}
-                      className="w-full bg-[#f8f7f4] border border-[#0d1527]/15 rounded-lg px-3.5 py-2.5 text-xs text-[#0d1527] focus:outline-none focus:ring-1 focus:ring-[#0d1527]"
+                      className="w-full bg-[#f5efe4] border border-[#0a2e45]/15 rounded-lg px-3.5 py-2.5 text-xs text-[#0a2e45] focus:outline-none focus:ring-1 focus:ring-[#0a2e45]"
                     />
                   </div>
                 </div>
 
-                <label className="flex items-center gap-2 pt-1 text-xs text-[#0d1527]/80 cursor-pointer">
+                <label className="flex items-center gap-2 pt-1 text-xs text-[#0a2e45]/80 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={airportTaxiNeeded}
                     onChange={(e) => setAirportTaxiNeeded(e.target.checked)}
-                    className="rounded border-[#0d1527]/20 text-[#0d1527] focus:ring-0"
+                    className="rounded border-[#0a2e45]/20 text-[#0a2e45] focus:ring-0"
                   />
                   <span>Arrange Velana Airport (MLE) bridge taxi pickup on arrival</span>
                 </label>
@@ -229,7 +235,7 @@ export default function BookingModal({
               {/* Submit CTA */}
               <button
                 type="submit"
-                className="w-full py-3.5 text-xs font-semibold uppercase tracking-widest text-white bg-[#0d1527] hover:bg-[#1a2b50] rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                className="w-full py-3.5 text-xs font-semibold uppercase tracking-widest text-white btn-cta-solid rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
               >
                 <span>Confirm Reservation</span>
                 <ArrowRight className="w-4 h-4" />

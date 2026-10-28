@@ -22,6 +22,7 @@ export default function App() {
     checkout: '2026-10-31',
     guests: 2,
     roomType: 'deluxe',
+    promoCode: '',
   });
 
   const handleBookingChange = (updates: Partial<BookingState>) => {
@@ -38,7 +39,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f5ef] text-[#051d2d] flex flex-col selection:bg-[#ff5a36] selection:text-white">
+    <div className="min-h-screen bg-[#fbf8f3] text-[#0a2e45] flex flex-col selection:bg-[#1fb5ac] selection:text-white">
       {/* Scroll Progress indicator at the very top of viewport */}
       <ScrollProgress />
 

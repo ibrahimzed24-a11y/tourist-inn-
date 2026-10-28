@@ -1,5 +1,4 @@
 import React from 'react';
-import { useCardTilt } from '../hooks/useCardTilt';
 import TypographicSnapIn from './TypographicSnapIn';
 import ScrollRevealSection from './ScrollRevealSection';
 import { MapPin, Utensils, MessageSquare, ArrowUpRight } from 'lucide-react';
@@ -23,28 +22,28 @@ function FeatureCard({
   icon,
   imageUrl,
 }: FeatureCardItemProps) {
-  const cardRef = useCardTilt<HTMLDivElement>({ maxTiltDeg: 12, scale: 1.04 });
+  const cardRef = React.useRef<HTMLDivElement>(null);
 
   return (
     <div
       ref={cardRef}
-      className="group relative flex flex-col justify-between bg-white rounded-2xl border border-[#0d1527]/12 overflow-hidden shadow-sm hover:shadow-xl will-change-transform transform-gpu transition-shadow duration-300"
-      style={{ transformStyle: 'preserve-3d' }}
+      className="group relative flex flex-col justify-between bg-white rounded-2xl overflow-hidden shadow-[0_18px_40px_-28px_rgba(10,46,69,0.35)] hover:shadow-[0_28px_50px_-26px_rgba(10,46,69,0.45)] transition-shadow duration-500"
+     
     >
       {/* Visual Asset Window */}
-      <div className="relative h-56 w-full overflow-hidden bg-[#0d1527]/5">
+      <div className="relative h-64 w-full overflow-hidden bg-[#0a2e45]/5">
         <img
           src={imageUrl}
           alt={title}
           loading="lazy"
           referrerPolicy="no-referrer"
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          className="zoom-img w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1527]/75 via-[#0d1527]/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a2e45]/75 via-[#0a2e45]/20 to-transparent" />
         
         {/* Editorial Index Stamp */}
         <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
-          <span className="px-2.5 py-1 text-[11px] font-mono font-bold tracking-wider uppercase text-white bg-[#0d1527]/80 backdrop-blur rounded">
+          <span className="px-2.5 py-1 text-[11px] font-mono font-bold tracking-wider uppercase text-white bg-[#0a2e45]/80 backdrop-blur rounded">
             {index}
           </span>
         </div>
@@ -65,19 +64,19 @@ function FeatureCard({
       {/* Content Container */}
       <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
         <div className="space-y-2">
-          <h3 className="text-xl font-serif font-bold text-[#0d1527] group-hover:text-[#ff5a36] transition-colors">
+          <h3 className="text-xl font-serif font-bold text-[#0a2e45] group-hover:text-[#1fb5ac] transition-colors">
             {title}
           </h3>
-          <p className="text-sm text-[#0d1527]/70 leading-relaxed font-normal">
+          <p className="text-sm text-[#0a2e45]/70 leading-relaxed font-normal">
             {description}
           </p>
         </div>
 
         {/* Bullet utility items */}
-        <div className="pt-3 border-t border-[#0d1527]/10 space-y-2">
+        <div className="pt-3 border-t border-[#0a2e45]/10 space-y-2">
           {highlights.map((item, i) => (
-            <div key={i} className="text-xs text-[#0d1527]/80 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ff5a36]" />
+            <div key={i} className="text-xs text-[#0a2e45]/80 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1fb5ac]" />
               <span>{item}</span>
             </div>
           ))}
@@ -138,12 +137,12 @@ export default function FeaturesGrid({ typoTriggerKey }: FeaturesGridProps) {
   ];
 
   return (
-    <ScrollRevealSection id="features" className="py-24 bg-[#f7f5ef] border-b border-[#051d2d]/10">
+    <ScrollRevealSection id="features" className="py-24 bg-[#fbf8f3] border-b border-[#0a2e45]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Heading with Typographic Snap-In */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#051d2d]/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#0a2e45]/10">
           <div className="space-y-3">
-            <span className="text-xs uppercase font-mono tracking-widest text-teal-800 block font-bold">
+            <span className="text-xs uppercase font-mono tracking-widest text-[#1fb5ac] block font-semibold">
               CURATED ADVANTAGES
             </span>
             <TypographicSnapIn
@@ -151,10 +150,10 @@ export default function FeaturesGrid({ typoTriggerKey }: FeaturesGridProps) {
               text="ARCHITECTURAL BALANCE & UTILITY"
               triggerKey={typoTriggerKey}
               delayMultiplier={0.015}
-              className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#051d2d]"
+              className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#0a2e45]"
             />
           </div>
-          <p className="text-sm text-[#051d2d]/70 max-w-md font-normal leading-relaxed">
+          <p className="text-sm text-[#0a2e45]/70 max-w-md font-normal leading-relaxed">
             Every feature is calibrated to provide effortless peace of mind during your Malé transit or extended city retreat.
           </p>
         </div>

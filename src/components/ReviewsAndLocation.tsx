@@ -26,11 +26,11 @@ export default function ReviewsAndLocation({ typoTriggerKey }: ReviewsAndLocatio
   ];
 
   return (
-    <ScrollRevealSection id="reviews" className="py-24 bg-[#f7f5ef] border-b border-[#051d2d]/10">
+    <ScrollRevealSection id="reviews" className="py-24 bg-[#fbf8f3] border-b border-[#0a2e45]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         {/* Top Heading */}
         <div className="space-y-3 max-w-2xl">
-          <span className="text-xs uppercase font-mono tracking-widest text-teal-800 block font-bold">
+          <span className="text-xs uppercase font-mono tracking-widest text-[#1fb5ac] block font-semibold">
             GUEST SATISFACTION & MALÉ GEOGRAPHY
           </span>
           <TypographicSnapIn
@@ -38,19 +38,19 @@ export default function ReviewsAndLocation({ typoTriggerKey }: ReviewsAndLocatio
             text="VERIFIED REPUTATION & SURROUNDINGS"
             triggerKey={typoTriggerKey}
             delayMultiplier={0.014}
-            className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#051d2d]"
+            className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#0a2e45]"
           />
         </div>
 
         {/* Split Grid: Left = Verified Scorecard, Right = Getting There & Nearby */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left Column: Quantitative Rigor (6 cols) */}
-          <div className="lg:col-span-6 bg-white rounded-2xl border border-[#0d1527]/12 p-8 shadow-sm space-y-8">
-            <div className="flex items-baseline justify-between border-b border-[#0d1527]/10 pb-6">
+          <div className="lg:col-span-6 bg-white rounded-2xl border border-[#0a2e45]/12 p-8 shadow-sm space-y-8">
+            <div className="flex items-baseline justify-between border-b border-[#0a2e45]/10 pb-6">
               <div>
-                <div className="text-5xl font-serif font-bold text-[#0d1527] tabular-nums flex items-baseline gap-2">
+                <div className="text-5xl font-serif font-bold text-[#0a2e45] tabular-nums flex items-baseline gap-2">
                   <span>8.8</span>
-                  <span className="text-xl text-[#0d1527]/50 font-sans font-normal">/ 10</span>
+                  <span className="text-xl text-[#0a2e45]/50 font-sans font-normal">/ 10</span>
                 </div>
                 <div className="text-xs font-semibold uppercase tracking-wider text-amber-900 mt-1">
                   ★ Rated Excellent Across 678 Reviews
@@ -65,18 +65,18 @@ export default function ReviewsAndLocation({ typoTriggerKey }: ReviewsAndLocatio
 
             {/* Score bars */}
             <div className="space-y-4">
-              <h3 className="text-xs uppercase font-mono tracking-wider font-bold text-[#0d1527]/70">
+              <h3 className="text-xs uppercase font-mono tracking-wider font-bold text-[#0a2e45]/70">
                 Performance Metrics by Theme
               </h3>
               {scoreBreakdowns.map((item, idx) => (
                 <div key={idx} className="space-y-1.5">
-                  <div className="flex justify-between text-xs text-[#0d1527] font-medium">
+                  <div className="flex justify-between text-xs text-[#0a2e45] font-medium">
                     <span>{item.label}</span>
-                    <span className="font-mono tabular-nums text-[#0d1527]/70">{item.pct}</span>
+                    <span className="font-mono tabular-nums text-[#0a2e45]/70">{item.pct}</span>
                   </div>
-                  <div className="w-full h-2 bg-[#0d1527]/8 rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-[#0a2e45]/8 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-[#0d1527] rounded-full transition-all duration-700"
+                      className="h-full bg-[#0a2e45] rounded-full transition-all duration-700"
                       style={{ width: item.pct }}
                     />
                   </div>
@@ -85,10 +85,10 @@ export default function ReviewsAndLocation({ typoTriggerKey }: ReviewsAndLocatio
             </div>
 
             {/* Verified Quotes */}
-            <div className="pt-4 border-t border-[#0d1527]/10 space-y-4">
-              <div className="p-4 bg-[#f8f7f4] rounded-xl border border-[#0d1527]/8 text-xs leading-relaxed text-[#0d1527]/80 italic">
+            <div className="pt-4 border-t border-[#0a2e45]/10 space-y-4">
+              <div className="p-4 bg-[#f5efe4] rounded-xl border border-[#0a2e45]/8 text-xs leading-relaxed text-[#0a2e45]/80 italic">
                 “Incredible convenience for our Malé transit. The WhatsApp concierge had a taxi waiting at the airport, and the kitchenette allowed us to prepare breakfast easily before catching our morning seaplane.”
-                <span className="block not-italic font-semibold text-[#0d1527] mt-2">
+                <span className="block not-italic font-semibold text-[#0a2e45] mt-2">
                   — Elena & Marco S. · Verified Booking Partner Review
                 </span>
               </div>
@@ -98,7 +98,7 @@ export default function ReviewsAndLocation({ typoTriggerKey }: ReviewsAndLocatio
           {/* Right Column: Getting There & Sights (6 cols) */}
           <div className="lg:col-span-6 space-y-8">
             {/* Airport Transfer Transit Card */}
-            <div className="bg-[#0d1527] text-white rounded-2xl p-8 shadow-xl space-y-6">
+            <div className="bg-[#0a2e45] text-white rounded-2xl p-8 shadow-xl space-y-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="p-2 bg-white/10 rounded-lg">
@@ -131,28 +131,28 @@ export default function ReviewsAndLocation({ typoTriggerKey }: ReviewsAndLocatio
             </div>
 
             {/* Nearby Sights */}
-            <div id="location" className="bg-white rounded-2xl border border-[#0d1527]/12 p-8 shadow-sm space-y-4">
+            <div id="location" className="bg-white rounded-2xl border border-[#0a2e45]/12 p-8 shadow-sm space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-[#ff5a36]" />
-                  <h3 className="text-base font-serif font-bold text-[#0d1527]">
+                  <MapPin className="w-4 h-4 text-[#1fb5ac]" />
+                  <h3 className="text-base font-serif font-bold text-[#0a2e45]">
                     Points of Interest Nearby
                   </h3>
                 </div>
-                <span className="text-[11px] font-mono text-[#0d1527]/50">Walking Distance</span>
+                <span className="text-[11px] font-mono text-[#0a2e45]/50">Walking Distance</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 {nearbySights.map((sight, i) => (
                   <div
                     key={i}
-                    className="p-3 bg-[#f8f7f4] rounded-lg border border-[#0d1527]/8 flex items-center justify-between text-xs"
+                    className="p-3 bg-[#f5efe4] rounded-lg border border-[#0a2e45]/8 flex items-center justify-between text-xs"
                   >
                     <div>
-                      <div className="font-semibold text-[#0d1527]">{sight.name}</div>
-                      <div className="text-[11px] text-[#0d1527]/60">{sight.kind}</div>
+                      <div className="font-semibold text-[#0a2e45]">{sight.name}</div>
+                      <div className="text-[11px] text-[#0a2e45]/60">{sight.kind}</div>
                     </div>
-                    <span className="font-mono font-bold text-[#0d1527]">{sight.dist}</span>
+                    <span className="font-mono font-bold text-[#0a2e45]">{sight.dist}</span>
                   </div>
                 ))}
               </div>
